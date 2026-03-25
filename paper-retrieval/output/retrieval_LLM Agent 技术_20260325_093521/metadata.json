@@ -1,0 +1,106 @@
+{
+  "topic": "LLM Agent 技术",
+  "timestamp": "20260325_093521",
+  "total_searched": 10,
+  "selected_count": 5,
+  "parsed": false,
+  "papers": [
+    {
+      "title": "Focus Agent: LLM-Powered Virtual Focus Group",
+      "abstract": "In the domain of Human-Computer Interaction, focus groups represent a widely utilised yet resource-intensive methodology, often demanding the expertise of skilled moderators and meticulous preparatory efforts. This study introduces the ``Focus Agent,'' a Large Language Model (LLM) powered framework that simulates both the focus group (for data collection) and acts as a moderator in a focus group setting with human participants. To assess the data quality derived from the Focus Agent, we ran five focus group sessions with a total of 23 human participants as well as deploying the Focus Agent to simulate these discussions with AI participants. Quantitative analysis indicates that Focus Agent can generate opinions similar to those of human participants. Furthermore, the research exposes some improvements associated with LLMs acting as moderators in focus group discussions that include human participants.",
+      "authors": [
+        "Taiyu Zhang",
+        "Xuesong Zhang",
+        "Robbe Cools",
+        "Adalberto L. Simeone"
+      ],
+      "year": 2024,
+      "arxiv_id": "2409.01907v1",
+      "url": "http://arxiv.org/abs/2409.01907v1",
+      "source": "arxiv",
+      "relevance_score": 5.0,
+      "key_points": [],
+      "full_text": "",
+      "pdf_path": ""
+    },
+    {
+      "title": "A Plan Reuse Mechanism for LLM-Driven Agent",
+      "abstract": "Integrating large language models (LLMs) into personal assistants, like Xiao Ai and Blue Heart V, effectively enhances their ability to interact with humans, solve complex tasks, and manage IoT devices. Such assistants are also termed LLM-driven agents. Upon receiving user requests, the LLM-driven agent generates plans using an LLM, executes these plans through various tools, and then returns the response to the user. During this process, the latency for generating a plan with an LLM can reach tens of seconds, significantly degrading user experience. Real-world dataset analysis shows that about 30% of the requests received by LLM-driven agents are identical or similar, which allows the reuse of previously generated plans to reduce latency. However, it is difficult to accurately define the similarity between the request texts received by the LLM-driven agent through directly evaluating the original request texts. Moreover, the diverse expressions of natural language and the unstructured format of plan texts make implementing plan reuse challenging. To address these issues, we present and implement a plan reuse mechanism for LLM-driven agents called AgentReuse. AgentReuse leverages the similarities and differences among requests' semantics and uses intent classification to evaluate the similarities between requests and enable the reuse of plans. Experimental results based on a real-world dataset demonstrate that AgentReuse achieves a 93% effective plan reuse rate, an F1 score of 0.9718, and an accuracy of 0.9459 in evaluating request similarities, reducing latency by 93.12% compared with baselines without using the reuse mechanism.",
+      "authors": [
+        "Guopeng Li",
+        "Ruiqi Wu",
+        "Haisheng Tan"
+      ],
+      "year": 2025,
+      "arxiv_id": "2512.21309v2",
+      "url": "http://arxiv.org/abs/2512.21309v2",
+      "source": "arxiv",
+      "relevance_score": 5.0,
+      "key_points": [],
+      "full_text": "",
+      "pdf_path": ""
+    },
+    {
+      "title": "Small LLMs Are Weak Tool Learners: A Multi-LLM Agent",
+      "abstract": "Large Language Model (LLM) agents significantly extend the capabilities of standalone LLMs, empowering them to interact with external tools (e.g., APIs, functions) and complete various tasks in a self-directed fashion. The challenge of tool use demands that LLMs not only understand user queries and generate answers accurately but also excel in task planning, tool invocation, and result summarization. While traditional works focus on training a single LLM with all these capabilities, performance limitations become apparent, particularly with smaller models. To overcome these challenges, we propose a novel approach that decomposes the aforementioned capabilities into a planner, caller, and summarizer. Each component is implemented by a single LLM that focuses on a specific capability and collaborates with others to accomplish the task. This modular framework facilitates individual updates and the potential use of smaller LLMs for building each capability. To effectively train this framework, we introduce a two-stage training paradigm. First, we fine-tune a backbone LLM on the entire dataset without discriminating sub-tasks, providing the model with a comprehensive understanding of the task. Second, the fine-tuned LLM is used to instantiate the planner, caller, and summarizer respectively, which are continually fine-tuned on respective sub-tasks. Evaluation across various tool-use benchmarks illustrates that our proposed multi-LLM framework surpasses the traditional single-LLM approach, highlighting its efficacy and advantages in tool learning.",
+      "authors": [
+        "Weizhou Shen",
+        "Chenliang Li",
+        "Hongzhan Chen",
+        "Ming Yan",
+        "Xiaojun Quan",
+        "Hehong Chen",
+        "Ji Zhang",
+        "Fei Huang"
+      ],
+      "year": 2024,
+      "arxiv_id": "2401.07324v3",
+      "url": "http://arxiv.org/abs/2401.07324v3",
+      "source": "arxiv",
+      "relevance_score": 5.0,
+      "key_points": [],
+      "full_text": "",
+      "pdf_path": ""
+    },
+    {
+      "title": "MedAide: Information Fusion and Anatomy of Medical Intents via LLM-based Agent Collaboration",
+      "abstract": "In healthcare intelligence, the ability to fuse heterogeneous, multi-intent information from diverse clinical sources is fundamental to building reliable decision-making systems. Large Language Model (LLM)-driven information interaction systems currently showing potential promise in the healthcare domain. Nevertheless, they often suffer from information redundancy and coupling when dealing with complex medical intents, leading to severe hallucinations and performance bottlenecks. To this end, we propose MedAide, an LLM-based medical multi-agent collaboration framework designed to enable intent-aware information fusion and coordinated reasoning across specialized healthcare domains. Specifically, we introduce a regularization-guided module that combines syntactic constraints with retrieval augmented generation to decompose complex queries into structured representations, facilitating fine-grained clinical information fusion and intent resolution. Additionally, a dynamic intent prototype matching module is proposed to utilize dynamic prototype representation with a semantic similarity matching mechanism to achieve adaptive recognition and updating of the agent's intent in multi-round healthcare dialogues. Ultimately, we design a rotation agent collaboration mechanism that introduces dynamic role rotation and decision-level information fusion across specialized medical agents. Extensive experiments are conducted on four medical benchmarks with composite intents. Experimental results from automated metrics and expert doctor evaluations show that MedAide outperforms current LLMs and improves their medical proficiency and strategic reasoning.",
+      "authors": [
+        "Dingkang Yang",
+        "Jinjie Wei",
+        "Mingcheng Li",
+        "Jiyao Liu",
+        "Lihao Liu",
+        "Ming Hu",
+        "Junjun He",
+        "Yakun Ju",
+        "Wei Zhou",
+        "Yang Liu",
+        "Lihua Zhang"
+      ],
+      "year": 2024,
+      "arxiv_id": "2410.12532v3",
+      "url": "http://arxiv.org/abs/2410.12532v3",
+      "source": "arxiv",
+      "relevance_score": 5.0,
+      "key_points": [],
+      "full_text": "",
+      "pdf_path": ""
+    },
+    {
+      "title": "Context Engineering for Multi-Agent LLM Code Assistants Using Elicit, NotebookLM, ChatGPT, and Claude Code",
+      "abstract": "Large Language Models (LLMs) have shown promise in automating code generation and software engineering tasks, yet they often struggle with complex, multi-file projects due to context limitations and knowledge gaps. We propose a novel context engineering workflow that combines multiple AI components: an Intent Translator (GPT-5) for clarifying user requirements, an Elicit-powered semantic literature retrieval for injecting domain knowledge, NotebookLM-based document synthesis for contextual understanding, and a Claude Code multi-agent system for code generation and validation. Our integrated approach leverages intent clarification, retrieval-augmented generation, and specialized sub-agents orchestrated via Claude's agent framework. We demonstrate that this method significantly improves the accuracy and reliability of code assistants in real-world repositories, yielding higher single-shot success rates and better adherence to project context than baseline single-agent approaches. Qualitative results on a large Next.js codebase show the multi-agent system effectively plans, edits, and tests complex features with minimal human intervention. We compare our system with recent frameworks like CodePlan, MASAI, and HyperAgent, highlighting how targeted context injection and agent role decomposition lead to state-of-the-art performance. Finally, we discuss the implications for deploying LLM-based coding assistants in production, along with lessons learned on context management and future research directions.",
+      "authors": [
+        "Muhammad Haseeb"
+      ],
+      "year": 2025,
+      "arxiv_id": "2508.08322v1",
+      "url": "http://arxiv.org/abs/2508.08322v1",
+      "source": "arxiv",
+      "relevance_score": 5.0,
+      "key_points": [],
+      "full_text": "",
+      "pdf_path": ""
+    }
+  ]
+}

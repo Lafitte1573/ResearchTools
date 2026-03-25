@@ -1,0 +1,25 @@
+# Paper Retrieval 配置文件
+
+llm:
+  base_url: "http://localhost:8000/v1"
+  api_key: "EMPTY_API_KEY"
+  model: "qwen3"
+  temperature: 0.3
+  max_tokens: 16000
+
+search:
+  arxiv:
+    max_results: 10
+    top_k: 5
+    sort_by: "relevance"
+    relevance_threshold: 5
+    
+  keywords:
+    enabled: true  # 是否启用关键词生成
+    max_keywords: 8  # 最大关键词数量
+
+output:
+  dir: "output"
+
+mineru:
+  url: "http://localhost:5000"

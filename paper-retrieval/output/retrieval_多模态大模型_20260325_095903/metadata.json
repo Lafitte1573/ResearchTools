@@ -1,0 +1,129 @@
+{
+  "topic": "多模态大模型",
+  "timestamp": "20260325_095903",
+  "total_searched": 5,
+  "selected_count": 5,
+  "parsed": true,
+  "papers": [
+    {
+      "title": "Dynamic Self-adaptive Multiscale Distillation from Pre-trained Multimodal Large Model for Efficient Cross-modal Representation Learning",
+      "abstract": "In recent years, pre-trained multimodal large models have attracted widespread attention due to their outstanding performance in various multimodal applications. Nonetheless, the extensive computational resources and vast datasets required for their training present significant hurdles for deployment in environments with limited computational resources. To address this challenge, we propose a novel dynamic self-adaptive multiscale distillation from pre-trained multimodal large model for efficient cross-modal representation learning for the first time. Unlike existing distillation methods, our strategy employs a multiscale perspective, enabling the extraction structural knowledge across from the pre-trained multimodal large model. Ensuring that the student model inherits a comprehensive and nuanced understanding of the teacher knowledge. To optimize each distillation loss in a balanced and efficient manner, we propose a dynamic self-adaptive distillation loss balancer, a novel component eliminating the need for manual loss weight adjustments and dynamically balances each loss item during the distillation process. Our methodology streamlines pre-trained multimodal large models using only their output features and original image-level information, requiring minimal computational resources. This efficient approach is suited for various applications and allows the deployment of advanced multimodal technologies even in resource-limited settings. Extensive experiments has demonstrated that our method maintains high performance while significantly reducing model complexity and training costs. Moreover, our distilled student model utilizes only image-level information to achieve state-of-the-art performance on cross-modal retrieval tasks, surpassing previous methods that relied on region-level information.",
+      "authors": [
+        "Zhengyang Liang",
+        "Meiyu Liang",
+        "Wei Huang",
+        "Yawen Li",
+        "Zhe Xue"
+      ],
+      "year": 2024,
+      "arxiv_id": "2404.10838v1",
+      "url": "http://arxiv.org/abs/2404.10838v1",
+      "source": "arxiv",
+      "relevance_score": 9.0,
+      "key_points": [
+        "提出一种动态自适应多尺度知识蒸馏方法，从预训练多模态大模型中提取结构化知识",
+        "设计动态自适应蒸馏损失平衡器，无需手动调参，实现多损失项的自动平衡",
+        "仅使用图像级信息即可实现跨模态检索的SOTA性能，显著降低计算开销与模型复杂度"
+      ],
+      "full_text": "",
+      "pdf_path": "output/retrieval_多模态大模型_20260325_095903/pdfs/2404.10838v1.pdf"
+    },
+    {
+      "title": "Towards Unbiased Cross-Modal Representation Learning for Food Image-to-Recipe Retrieval",
+      "abstract": "This paper addresses the challenges of learning representations for recipes and food images in the cross-modal retrieval problem. As the relationship between a recipe and its cooked dish is cause-and-effect, treating a recipe as a text source describing the visual appearance of a dish for learning representation, as the existing approaches, will create bias misleading image-and-recipe similarity judgment. Specifically, a food image may not equally capture every detail in a recipe, due to factors such as the cooking process, dish presentation, and image-capturing conditions. The current representation learning tends to capture dominant visual-text alignment while overlooking subtle variations that determine retrieval relevance. In this paper, we model such bias in cross-modal representation learning using causal theory. The causal view of this problem suggests ingredients as one of the confounder sources and a simple backdoor adjustment can alleviate the bias. By causal intervention, we reformulate the conventional model for food-to-recipe retrieval with an additional term to remove the potential bias in similarity judgment. Based on this theory-informed formulation, we empirically prove the oracle performance of retrieval on the Recipe1M dataset to be MedR=1 across the testing data sizes of 1K, 10K, and even 50K. We also propose a plug-and-play neural module, which is essentially a multi-label ingredient classifier for debiasing. New state-of-the-art search performances are reported on the Recipe1M dataset.",
+      "authors": [
+        "Qing Wang",
+        "Chong-Wah Ngo",
+        "Ee-Peng Lim"
+      ],
+      "year": 2025,
+      "arxiv_id": "2511.15201v2",
+      "url": "http://arxiv.org/abs/2511.15201v2",
+      "source": "arxiv",
+      "relevance_score": 8.0,
+      "key_points": [
+        "提出因果视角建模食物图像与菜谱之间的跨模态偏差，识别食材为混淆因子",
+        "通过后门调整和因果干预重构表示学习目标，减少因视觉-文本主导对齐带来的偏差",
+        "设计可插拔的多标签食材分类模块，实现端到端去偏，显著提升Recipe1M数据集上的检索性能（MedR=1）"
+      ],
+      "full_text": "",
+      "pdf_path": "output/retrieval_多模态大模型_20260325_095903/pdfs/2511.15201v2.pdf"
+    },
+    {
+      "title": "Vision-Language Model for Object Detection and Segmentation: A Review and Evaluation",
+      "abstract": "Vision-Language Model (VLM) have gained widespread adoption in Open-Vocabulary (OV) object detection and segmentation tasks. Despite they have shown promise on OV-related tasks, their effectiveness in conventional vision tasks has thus far been unevaluated. In this work, we present the systematic review of VLM-based detection and segmentation, view VLM as the foundational model and conduct comprehensive evaluations across multiple downstream tasks for the first time: 1) The evaluation spans eight detection scenarios (closed-set detection, domain adaptation, crowded objects, etc.) and eight segmentation scenarios (few-shot, open-world, small object, etc.), revealing distinct performance advantages and limitations of various VLM architectures across tasks. 2) As for detection tasks, we evaluate VLMs under three finetuning granularities: \\textit{zero prediction}, \\textit{visual fine-tuning}, and \\textit{text prompt}, and further analyze how different finetuning strategies impact performance under varied task. 3) Based on empirical findings, we provide in-depth analysis of the correlations between task characteristics, model architectures, and training methodologies, offering insights for future VLM design. 4) We believe that this work shall be valuable to the pattern recognition experts working in the fields of computer vision, multimodal learning, and vision foundation models by introducing them to the problem, and familiarizing them with the current status of the progress while providing promising directions for future research. A project associated with this review and evaluation has been created at https://github.com/better-chao/perceptual_abilities_evaluation.",
+      "authors": [
+        "Yongchao Feng",
+        "Yajie Liu",
+        "Shuai Yang",
+        "Wenrui Cai",
+        "Jinqing Zhang",
+        "Qiqi Zhan",
+        "Ziyue Huang",
+        "Hongxi Yan",
+        "Qiao Wan",
+        "Chenguang Liu",
+        "Junzhe Wang",
+        "Jiahui Lv",
+        "Ziqi Liu",
+        "Tengyuan Shi",
+        "Qingjie Liu",
+        "Yunhong Wang"
+      ],
+      "year": 2025,
+      "arxiv_id": "2504.09480v1",
+      "url": "http://arxiv.org/abs/2504.09480v1",
+      "source": "arxiv",
+      "relevance_score": 8.0,
+      "key_points": [
+        "系统性回顾和评估基于视觉-语言模型的检测与分割方法，涵盖多种开放词汇和传统视觉任务场景。",
+        "首次全面评估VLM在八种检测和八种分割任务中的表现，揭示不同架构在任务中的优势与局限。",
+        "提出三种微调策略（零预测、视觉微调、文本提示）并分析其对性能的影响，为VLM设计提供实证指导。",
+        "核心贡献在于构建了多任务评估框架，揭示了任务特性、模型架构与训练方法之间的关联，推动多模态大模型在视觉理解中的应用发展。"
+      ],
+      "full_text": "",
+      "pdf_path": "output/retrieval_多模态大模型_20260325_095903/pdfs/2504.09480v1.pdf"
+    },
+    {
+      "title": "Auxiliary Cross-Modal Representation Learning with Triplet Loss Functions for Online Handwriting Recognition",
+      "abstract": "Cross-modal representation learning learns a shared embedding between two or more modalities to improve performance in a given task compared to using only one of the modalities. Cross-modal representation learning from different data types -- such as images and time-series data (e.g., audio or text data) -- requires a deep metric learning loss that minimizes the distance between the modality embeddings. In this paper, we propose to use the contrastive or triplet loss, which uses positive and negative identities to create sample pairs with different labels, for cross-modal representation learning between image and time-series modalities (CMR-IS). By adapting the triplet loss for cross-modal representation learning, higher accuracy in the main (time-series classification) task can be achieved by exploiting additional information of the auxiliary (image classification) task. We present a triplet loss with a dynamic margin for single label and sequence-to-sequence classification tasks. We perform extensive evaluations on synthetic image and time-series data, and on data for offline handwriting recognition (HWR) and on online HWR from sensor-enhanced pens for classifying written words. Our experiments show an improved classification accuracy, faster convergence, and better generalizability due to an improved cross-modal representation. Furthermore, the more suitable generalizability leads to a better adaptability between writers for online HWR.",
+      "authors": [
+        "Felix Ott",
+        "David Rügamer",
+        "Lucas Heublein",
+        "Bernd Bischl",
+        "Christopher Mutschler"
+      ],
+      "year": 2022,
+      "arxiv_id": "2202.07901v3",
+      "url": "http://arxiv.org/abs/2202.07901v3",
+      "source": "arxiv",
+      "relevance_score": 7.0,
+      "key_points": [
+        "提出基于三元组损失的跨模态表示学习方法，用于图像与时间序列模态的对齐",
+        "通过辅助图像任务提升主任务（在线手写识别）的分类准确率与泛化能力",
+        "引入动态边距三元组损失，提升模型在单标签与序列到序列任务中的性能"
+      ],
+      "full_text": "",
+      "pdf_path": "output/retrieval_多模态大模型_20260325_095903/pdfs/2202.07901v3.pdf"
+    },
+    {
+      "title": "Lightweight Cross-Modal Representation Learning",
+      "abstract": "Low-cost cross-modal representation learning is crucial for deriving semantic representations across diverse modalities such as text, audio, images, and video. Traditional approaches typically depend on large specialized models trained from scratch, requiring extensive datasets and resulting in high resource and time costs. To overcome these challenges, we introduce a novel approach named Lightweight Cross-Modal Representation Learning (LightCRL). This method uses a single neural network titled Deep Fusion Encoder (DFE), which projects data from multiple modalities into a shared latent representation space. This reduces the overall parameter count while still delivering robust performance comparable to more complex systems.",
+      "authors": [
+        "Bilal Faye",
+        "Hanane Azzag",
+        "Mustapha Lebbah",
+        "Djamel Bouchaffra"
+      ],
+      "year": 2024,
+      "arxiv_id": "2403.04650v3",
+      "url": "http://arxiv.org/abs/2403.04650v3",
+      "source": "arxiv",
+      "relevance_score": 5.0,
+      "key_points": [],
+      "full_text": "",
+      "pdf_path": "output/retrieval_多模态大模型_20260325_095903/pdfs/2403.04650v3.pdf"
+    }
+  ]
+}
