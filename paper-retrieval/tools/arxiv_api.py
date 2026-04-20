@@ -25,6 +25,8 @@ class Paper:
     key_points: list[str] = field(default_factory=list)
     full_text: str = ""
     pdf_path: str = ""
+    bibtex_key: str = ""
+    note: str = ""  # 生成的论文笔记
 
     def to_dict(self) -> dict:
         return {
@@ -39,6 +41,8 @@ class Paper:
             "key_points": self.key_points,
             "full_text": self.full_text[:50000] if self.full_text else "",
             "pdf_path": self.pdf_path,
+            "bibtex_key": self.bibtex_key,
+            "note": self.note[:10000] if self.note else "",  # 限制笔记长度
         }
 
 
@@ -96,3 +100,51 @@ def search_arxiv_with_keywords(keywords: list[str], max_results: int = None) -> 
     combined_query = " OR ".join(query_parts)
     
     return search_arxiv(combined_query, max_results)
+
+
+def search_arxiv_single(query: str, max_results: int = 3) -> list[Paper]:
+    """根据标题精确搜索单篇论文
+    
+    Args:
+        query: 论文标题（支持模糊搜索）
+        max_results: 最大结果数
+        
+    Returns:
+        论文列表
+    """
+    client = arxiv.Client()
+    
+    search = arxiv.Search(
+        query=f'ti:"{query}"',
+        max_results=max_results,
+        sort_by=arxiv.SortCriterion.Relevance,
+    )
+    
+    papers = []
+    for result in client.results(search):
+        papers.append(Paper(
+            title=result.title,
+            abstract=result.summary,
+            authors=[a.name for a in result.authors],
+            year=result.published.year,
+            arxiv_id=result.entry_id.split("/")[-1],
+            url=result.entry_id,
+        ))
+    
+    if not papers:
+        search = arxiv.Search(
+            query=f'all:"{query}"',
+            max_results=max_results,
+            sort_by=arxiv.SortCriterion.Relevance,
+        )
+        for result in client.results(search):
+            papers.append(Paper(
+                title=result.title,
+                abstract=result.summary,
+                authors=[a.name for a in result.authors],
+                year=result.published.year,
+                arxiv_id=result.entry_id.split("/")[-1],
+                url=result.entry_id,
+            ))
+    
+    return papers[:max_results]

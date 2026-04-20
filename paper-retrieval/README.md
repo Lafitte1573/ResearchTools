@@ -9,17 +9,12 @@
 ### 基本用法
 
 ```bash
-# 智能关键词检索（推荐）- 自动生成精准的英文检索关键词
-python main.py retrieve "LLM Agent 技术"
+# 1. 检索论文（只生成 metadata.json 和 reference.bib）
+python main.py retrieve "LLM Agent"
 
-# 检索并解析 PDF 为 Markdown
-python main.py retrieve "多模态大模型" --parse
-
-# 指定检索数量和输出目录
-python main.py retrieve "强化学习" -n 10 -o my_papers
-
-# 传统模式 - 不使用关键词生成，直接用原始主题检索
-python main.py retrieve "强化学习" --no-keywords
+# 2. 下载论文并生成笔记
+python main.py notion ./output/retrieval_llm_agent_20250409
+python main.py notion ./output/retrieval_llm_agent_20250409 --pymupdf  # 使用 PyMuPDF
 ```
 
 ### 命令行参数详解
@@ -37,6 +32,7 @@ python main.py retrieve "强化学习" --no-keywords
 | `--number` | `-n` | 10 | 从 arXiv 检索的最大论文数量 |
 | `--output` | `-o` | `output/` | 结果输出目录路径 |
 | `--parse` | - | False | 是否下载 PDF 并调用 MinerU 解析为 Markdown |
+| `--notes` | - | False | 是否生成论文笔记（读取前10页，生成3000字以内英文笔记） |
 | `--no-keywords` | - | False | 禁用关键词生成功能，直接使用原始主题检索 |
 
 ### 使用示例
@@ -67,14 +63,38 @@ python main.py retrieve "大语言模型幻觉" -n 5 --parse
 - `pdfs/*.pdf` - 下载的 PDF 文件
 - `markdown/*.md` - MinerU 解析后的 Markdown 文件
 
-#### 3. 批量检索
+#### 3. 生成论文笔记（新功能）
+
+```bash
+# 检索并生成论文笔记
+python main.py retrieve "图神经网络" --notes
+```
+
+**执行流程：**
+1. 检索并筛选相关论文
+2. 下载每篇论文的 PDF 文件
+3. 将 PDF 前10页转换为图片
+4. 使用多模态大模型分析图片，生成结构化笔记
+5. 保存笔记到 `notes/` 目录和 `metadata.json`
+
+**输出内容：**
+- `metadata.json` - 包含论文元数据和生成的笔记（note 字段）
+- `pdfs/*.pdf` - 下载的 PDF 文件
+- `notes/*_note.md` - 每篇论文的独立笔记文件
+
+**笔记特点：**
+- 英文写作，与原论文对齐
+- 3000字以内，精炼总结核心思想和方法实现
+- 结构化格式：包含基本信息、核心思想、方法实现、关键创新点等章节
+
+#### 4. 批量检索
 
 ```bash
 # 检索 50 篇论文到指定目录
 python main.py retrieve "时间序列预测" -n 50 -o ts_forecasting_dataset
 ```
 
-#### 4. 精确检索（传统模式）
+#### 5. 精确检索（传统模式）
 
 ```bash
 # 使用特定术语直接检索，不经过关键词扩展
@@ -87,6 +107,7 @@ python main.py retrieve "Transformers are All You Need" --no-keywords
 - **🔍 多关键词检索**: 使用 OR 逻辑组合关键词，在 arXiv 进行全方位检索，提高召回率
 - **⭐ LLM 智能筛选**: 自动评估每篇论文与主题的相关性（1-10 分），并选取 Top-K 篇
 - **📄 PDF 解析**: 支持下载 PDF 并调用 MinerU 解析为结构化的 Markdown 格式
+- **📝 智能笔记生成**: 基于多模态大模型，自动阅读 PDF 前10页，生成3000字以内的英文结构化笔记
 - **⚙️ 灵活配置**: 可通过配置文件或命令行参数调整检索策略
 
 ## 输出结果
@@ -97,10 +118,12 @@ python main.py retrieve "Transformers are All You Need" --no-keywords
 output/
 └── retrieval_主题_时间戳/
     ├── metadata.json          # 论文元数据（必选）
-    ├── pdfs/                  # 下载的 PDF 文件（使用--parse 时生成）
+    ├── pdfs/                  # 下载的 PDF 文件（使用--parse 或 --notes 时生成）
     │   └── 2401.xxxxx.pdf
-    └── markdown/              # 解析后的 Markdown（使用--parse 时生成）
-        └── 2401.xxxxx.md
+    ├── markdown/              # 解析后的 Markdown（使用--parse 时生成）
+    │   └── 2401.xxxxx.md
+    └── notes/                 # 生成的论文笔记（使用--notes 时生成）
+        └── 2401.xxxxx_note.md
 ```
 
 ### metadata.json 格式
@@ -124,7 +147,8 @@ output/
       "key_points": ["核心观点 1", "核心观点 2"],
       "category": "Agent 规划",
       "full_text": "完整论文内容...",
-      "pdf_path": "pdfs/2401.xxxxx.pdf"
+      "pdf_path": "pdfs/2401.xxxxx.pdf",
+      "note": "# Paper Notes\n\n## Basic Information\n..."  // 生成的论文笔记（使用--notes 时生成）
     }
   ]
 }
@@ -135,6 +159,24 @@ output/
 - Python 3.10+
 - 本地 LLM 服务（默认：http://localhost:8000/v1）
 - MinerU 服务（可选，用于 PDF 解析，默认：http://localhost:5000）
+- Poppler（可选，用于 PDF 转图片，仅在使用 --notes 时需要）
+
+### 安装 Poppler
+
+**macOS:**
+```bash
+brew install poppler
+```
+
+**Ubuntu/Debian:**
+```bash
+sudo apt-get install poppler-utils
+```
+
+**CentOS/RHEL:**
+```bash
+sudo yum install poppler-utils
+```
 
 ## 安装
 

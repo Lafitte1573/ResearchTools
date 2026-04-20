@@ -1,0 +1,130 @@
+{
+  "topic": "金融时序预测智能体",
+  "timestamp": "20260409_190826",
+  "total_searched": 10,
+  "selected_count": 5,
+  "papers": [
+    {
+      "title": "Stock Market Prediction via Deep Learning Techniques: A Survey",
+      "abstract": "Existing surveys on stock market prediction often focus on traditional machine learning methods instead of deep learning methods. This motivates us to provide a structured and comprehensive overview of the research on stock market prediction. We present four elaborated subtasks of stock market prediction and propose a novel taxonomy to summarize the state-of-the-art models based on deep neural networks. In addition, we also provide detailed statistics on the datasets and evaluation metrics commonly used in the stock market. Finally, we point out several future directions by sharing some new perspectives on stock market prediction.",
+      "authors": [
+        "Jinan Zou",
+        "Qingying Zhao",
+        "Yang Jiao",
+        "Haiyao Cao",
+        "Yanxi Liu",
+        "Qingsen Yan",
+        "Ehsan Abbasnejad",
+        "Lingqiao Liu",
+        "Javen Qinfeng Shi"
+      ],
+      "year": 2022,
+      "arxiv_id": "2212.12717v2",
+      "url": "http://arxiv.org/abs/2212.12717v2",
+      "source": "arxiv",
+      "relevance_score": 7.0,
+      "key_points": [
+        "构建了基于深度神经网络的股票预测模型新型分类体系",
+        "整理了该领域常用的数据集与评估指标的统计数据",
+        "探讨了未来研究方向并提出了新的预测视角"
+      ],
+      "full_text": "",
+      "pdf_path": "",
+      "bibtex_key": "zou2022stock",
+      "note": ""
+    },
+    {
+      "title": "AI Agents: Evolution, Architecture, and Real-World Applications",
+      "abstract": "This paper examines the evolution, architecture, and practical applications of AI agents from their early, rule-based incarnations to modern sophisticated systems that integrate large language models with dedicated modules for perception, planning, and tool use. Emphasizing both theoretical foundations and real-world deployments, the paper reviews key agent paradigms, discusses limitations of current evaluation benchmarks, and proposes a holistic evaluation framework that balances task effectiveness, efficiency, robustness, and safety. Applications across enterprise, personal assistance, and specialized domains are analyzed, with insights into future research directions for more resilient and adaptive AI agent systems.",
+      "authors": [
+        "Naveen Krishnan"
+      ],
+      "year": 2025,
+      "arxiv_id": "2503.12687v1",
+      "url": "http://arxiv.org/abs/2503.12687v1",
+      "source": "arxiv",
+      "relevance_score": 7.0,
+      "key_points": [
+        "AI智能体从规则系统向集成大语言模型的现代系统演进",
+        "涵盖感知、规划与工具使用的智能体核心架构模块",
+        "提出平衡任务效果、效率、鲁棒性与安全性的综合评估框架"
+      ],
+      "full_text": "",
+      "pdf_path": "",
+      "bibtex_key": "krishnan2025agents",
+      "note": ""
+    },
+    {
+      "title": "Financial Time Series Forecasting with Deep Learning : A Systematic Literature Review: 2005-2019",
+      "abstract": "Financial time series forecasting is, without a doubt, the top choice of computational intelligence for finance researchers from both academia and financial industry due to its broad implementation areas and substantial impact. Machine Learning (ML) researchers came up with various models and a vast number of studies have been published accordingly. As such, a significant amount of surveys exist covering ML for financial time series forecasting studies. Lately, Deep Learning (DL) models started appearing within the field, with results that significantly outperform traditional ML counterparts. Even though there is a growing interest in developing models for financial time series forecasting research, there is a lack of review papers that were solely focused on DL for finance. Hence, our motivation in this paper is to provide a comprehensive literature review on DL studies for financial time series forecasting implementations. We not only categorized the studies according to their intended forecasting implementation areas, such as index, forex, commodity forecasting, but also grouped them based on their DL model choices, such as Convolutional Neural Networks (CNNs), Deep Belief Networks (DBNs), Long-Short Term Memory (LSTM). We also tried to envision the future for the field by highlighting the possible setbacks and opportunities, so the interested researchers can benefit.",
+      "authors": [
+        "Omer Berat Sezer",
+        "Mehmet Ugur Gudelek",
+        "Ahmet Murat Ozbayoglu"
+      ],
+      "year": 2019,
+      "arxiv_id": "1911.13288v1",
+      "url": "http://arxiv.org/abs/1911.13288v1",
+      "source": "arxiv",
+      "relevance_score": 7.0,
+      "key_points": [
+        "对2005-2019年间金融时间序列预测的深度学习研究进行了系统性文献回顾",
+        "根据应用领域（如指数、外汇）和模型选择（如CNN、LSTM等）对现有研究进行了分类",
+        "分析了该领域的发展现状并展望了未来的潜在挑战与机遇"
+      ],
+      "full_text": "",
+      "pdf_path": "",
+      "bibtex_key": "sezer2019financial",
+      "note": ""
+    },
+    {
+      "title": "GRUvader: Sentiment-Informed Stock Market Prediction",
+      "abstract": "Stock price prediction is challenging due to global economic instability, high volatility, and the complexity of financial markets. Hence, this study compared several machine learning algorithms for stock market prediction and further examined the influence of a sentiment analysis indicator on the prediction of stock prices. Our results were two-fold. Firstly, we used a lexicon-based sentiment analysis approach to identify sentiment features, thus evidencing the correlation between the sentiment indicator and stock price movement. Secondly, we proposed the use of GRUvader, an optimal gated recurrent unit network, for stock market prediction. Our findings suggest that stand-alone models struggled compared with AI-enhanced models. Thus, our paper makes further recommendations on latter systems.",
+      "authors": [
+        "Akhila Mamillapalli",
+        "Bayode Ogunleye",
+        "Sonia Timoteo Inacio",
+        "Olamilekan Shobayo"
+      ],
+      "year": 2024,
+      "arxiv_id": "2412.06836v1",
+      "url": "http://arxiv.org/abs/2412.06836v1",
+      "source": "arxiv",
+      "relevance_score": 7.0,
+      "key_points": [
+        "采用基于词典的情感分析识别市场情绪与股价波动的关联性",
+        "提出GRUvader模型结合GRU网络与情感指标进行股价预测",
+        "验证了AI增强模型在股票预测中优于独立传统模型"
+      ],
+      "full_text": "",
+      "pdf_path": "",
+      "bibtex_key": "mamillapalli2024gruvader",
+      "note": ""
+    },
+    {
+      "title": "Causality-Inspired Models for Financial Time Series Forecasting",
+      "abstract": "We introduce a novel framework to financial time series forecasting that leverages causality-inspired models to balance the trade-off between invariance to distributional changes and minimization of prediction errors. To the best of our knowledge, this is the first study to conduct a comprehensive comparative analysis among state-of-the-art causal discovery algorithms, benchmarked against non-causal feature selection techniques, in the application of forecasting asset returns. Empirical evaluations demonstrate the efficacy of our approach in yielding stable and accurate predictions, outperforming baseline models, particularly in tumultuous market conditions.",
+      "authors": [
+        "Daniel Cunha Oliveira",
+        "Yutong Lu",
+        "Xi Lin",
+        "Mihai Cucuringu",
+        "Andre Fujita"
+      ],
+      "year": 2024,
+      "arxiv_id": "2408.09960v1",
+      "url": "http://arxiv.org/abs/2408.09960v1",
+      "source": "arxiv",
+      "relevance_score": 7.0,
+      "key_points": [
+        "提出结合因果启发模型的金融时间序列预测框架",
+        "全面比较了因果发现算法与非因果特征选择技术在资产回报预测中的表现",
+        "通过因果建模平衡分布变化不变性与预测误差，提升了动荡市场下的预测稳定性"
+      ],
+      "full_text": "",
+      "pdf_path": "",
+      "bibtex_key": "oliveira2024causality",
+      "note": ""
+    }
+  ]
+}

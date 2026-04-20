@@ -1,6 +1,6 @@
 """
 论文检索 Pipeline
-用户指定主题 → 自动检索、筛选、下载、解析
+用户指定主题 → 自动检索、筛选、生成 metadata.json 和 reference.bib
 """
 import json
 import yaml
@@ -9,10 +9,9 @@ from datetime import datetime
 
 from agents.selector import select_top_papers
 from agents.keyword_generator import generate_keywords
-from tools.arxiv_api import search_arxiv, search_arxiv_with_keywords, Paper
-from tools.mineru_parser import download_and_parse, download_pdf
+from tools.arxiv_api import search_arxiv, search_arxiv_with_keywords
+from tools.bibtex_generator import generate_bibtex_file
 from rich.console import Console
-from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
 
 console = Console()
 
@@ -22,14 +21,13 @@ def _cfg():
     return yaml.safe_load(p.read_text())
 
 
-def run_retrieve(topic: str, max_results: int = None, output_dir: str = None, do_parse: bool = False, use_keywords: bool = True):
+def run_retrieve(topic: str, max_results: int = None, output_dir: str = None, use_keywords: bool = True):
     """执行论文检索流程
     
     Args:
         topic: 研究主题
         max_results: 最大检索数量
         output_dir: 输出目录
-        do_parse: 是否解析 PDF
         use_keywords: 是否使用生成的关键词进行检索（默认 True）
     """
     cfg = _cfg()
@@ -67,42 +65,24 @@ def run_retrieve(topic: str, max_results: int = None, output_dir: str = None, do
         return None
 
     # Step 3: 评估筛选
-    console.print("[bold]Step 2: 评估论文相关性[/bold]")
+    console.print("[bold]Step 3: 评估论文相关性[/bold]")
     selected = select_top_papers(papers, topic)
     console.print()
 
-    # Step 4: 可选 - 解析论文
-    parsed_data = {}
-    if do_parse and selected:
-        console.print("[bold]Step 3: 解析论文 PDF[/bold]")
-        with Progress(
-            SpinnerColumn(),
-            TextColumn("[progress.description]{task.description}"),
-            BarColumn(),
-            TaskProgressColumn(),
-            console=console,
-        ) as progress:
-            task = progress.add_task("解析中...", total=len(selected))
-            for paper in selected:
-                pdf_path = download_pdf(paper.arxiv_id, str(project_dir / "pdfs"))
-                paper.pdf_path = pdf_path or ""
-                full_text = download_and_parse(paper.arxiv_id, str(project_dir))
-                paper.full_text = full_text
-                parsed_data[paper.arxiv_id] = {
-                    "full_text": full_text,
-                    "pdf_path": pdf_path or "",
-                }
-                progress.advance(task)
-        console.print(f"[green]✓ 解析完成[/green]\n")
+    # Step 4: 生成 BibTeX 参考文献
+    console.print("[bold]Step 4: 生成 reference.bib[/bold]")
+    key_map = generate_bibtex_file(selected, str(project_dir / "reference.bib"))
+    for paper in selected:
+        paper.bibtex_key = key_map.get(paper.arxiv_id, "")
+    console.print(f"[green]✓ 已保存: {project_dir / 'reference.bib'}[/green]\n")
 
     # Step 5: 保存 metadata
-    console.print("[bold]Step 4: 保存 metadata.json[/bold]")
+    console.print("[bold]Step 5: 保存 metadata.json[/bold]")
     metadata = {
         "topic": topic,
         "timestamp": timestamp,
         "total_searched": len(papers),
         "selected_count": len(selected),
-        "parsed": do_parse,
         "papers": [p.to_dict() for p in selected],
     }
 
@@ -116,6 +96,6 @@ def run_retrieve(topic: str, max_results: int = None, output_dir: str = None, do
     # 汇总
     console.print(f"[bold green]🎉 检索完成！共 {len(selected)} 篇论文[/bold green]")
     for p in selected:
-        console.print(f"  - [{p.relevance_score:.1f}] {p.title[:70]}")
+        console.print(f"  - [{p.relevance_score:.1f}] [{p.bibtex_key}] {p.title[:70]}")
 
     return project_dir

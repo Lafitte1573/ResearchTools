@@ -1,9 +1,13 @@
 # Paper Retrieval 配置文件
 
 llm:
-  base_url: "http://localhost:8000/v1"
-  api_key: "EMPTY_API_KEY"
-  model: "qwen3"
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  api_key: "sk-72fdedcb79054a5d80b5884c18601570"
+  model: "qwen3.5-flash"
+#  base_url: 'https://api-inference.modelscope.cn/v1'
+#  api_key: 'ms-86ee389b-a6b1-4ff1-a9d7-8d207ed643ac' # ModelScope Token
+#  model: "Qwen/Qwen3-VL-30B-A3B-Instruct"
+  vision_model: "qwen3.5-flash"  # "qwen3-vl-flash-2026-01-22"  # 用于视觉任务的模型
   temperature: 0.3
   max_tokens: 16000
 
@@ -17,6 +21,11 @@ search:
   keywords:
     enabled: true  # 是否启用关键词生成
     max_keywords: 8  # 最大关键词数量
+
+notes:
+  enabled: true  # 是否默认启用笔记生成
+  max_pages: 6  # PDF 最大读取页数
+  max_note_length: 3000  # 笔记最大字数
 
 output:
   dir: "output"
