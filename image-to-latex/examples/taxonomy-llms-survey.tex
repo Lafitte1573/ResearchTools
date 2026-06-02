@@ -1,0 +1,125 @@
+% Reproduction of LLMs survey tree (IMG_6736.JPG)
+% Compile with: pdflatex llms-survey.tex
+\documentclass[border=8pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{forest}
+\usepackage{xcolor}
+
+% Colors sampled from the source image (light blue leaves, gray box borders)
+\definecolor{leaffill}{RGB}{220, 233, 245}      % pale blue citation leaves
+\definecolor{leafborder}{RGB}{120, 165, 210}    % muted blue border for leaves
+\definecolor{boxborder}{RGB}{120, 120, 120}     % gray border for category boxes
+
+\tikzset{
+  rootbox/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=1.7cm, align=center,
+    font=\footnotesize, inner sep=4pt, minimum height=8mm,
+  },
+  l1box/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=3.0cm, align=center,
+    font=\footnotesize, inner sep=4pt, minimum height=6mm,
+  },
+  catbox/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=2.8cm, align=center,
+    font=\footnotesize, inner sep=4pt, minimum height=6mm,
+  },
+  leafbox/.style={
+    draw=leafborder, line width=0.4pt, fill=leaffill,
+    rounded corners=3pt,
+    text width=4.6cm, align=left,
+    font=\scriptsize, inner sep=4pt,
+  },
+}
+
+\begin{document}
+\begin{forest}
+  for tree={
+    grow'=east,
+    parent anchor=east, child anchor=west,
+    l sep=12pt, s sep=5pt,
+    edge={-, thin, draw=boxborder},
+    edge path={
+      \noexpand\path[\forestoption{edge}, rounded corners=3pt]
+        (!u.parent anchor) -- +(6pt,0) |- (.child anchor);
+    },
+  },
+  where level=0{rootbox}{},
+  where level=1{l1box}{},
+  where level=2{catbox}{},
+  where n children=0{leafbox}{},
+  [{LLMs\\\lbrack70--73\rbrack}
+    [{\textbf{Fundamental Problems}}
+      [{Supervised Fine-tuning}
+        [{Zhang et al. [8].}]
+      ]
+      [{Alignment}
+        [{Shen et al. [9], Wang et al. [10], Liu et al. [11].}]
+      ]
+      [{Retrieval Augmentation}
+        [{Gao et al. [12].}]
+      ]
+      [{Knowledge Editing}
+        [{Wang et al. [13], Yao et al. [14], Wang et al. [15], Feng et al. [16], Zhang et al. [17].}]
+      ]
+      [{Tool Usage}
+        [{Qin et al. [18].}]
+      ]
+      [{Long-context}
+        [{Huang et al. [19], Wang et al. [20], Pawar et al. [21].}]
+      ]
+      [{Multimodal}
+        [{Wu et al. [22], Song et al. [23], Caffagni et al. [24], Yin et al. [25].}]
+      ]
+      [{Efficiency}
+        [{Bai et al. [26], Wan et al. [27], Miao et al. [28, 28], Xu et al. [29], Zhu et al. [30], Xu and McAuley [31], Wang et al. [32], Park et al. [33].}]
+      ]
+    ]
+    [{\textbf{Evaluation}}
+      [{Chang et al. [34], Guo et al. [35].}]
+    ]
+    [{\textbf{Applications}}
+      [{Information Processing}
+        [{Yang et al. [36], Zhu et al. [37], Xu et al. [38].}]
+      ]
+      [{Software Engineering}
+        [{Fan et al. [39], Wang et al. [40], Zheng et al. [41].}]
+      ]
+      [{Robotics}
+        [{Zeng et al. [42].}]
+      ]
+      [{Autonomous Driving}
+        [{Cui et al. [43], Yang et al. [44].}]
+      ]
+      [{Medecine}
+        [{He et al. [45], Zhou et al. [46], Wang et al. [47].}]
+      ]
+      [{Finance}
+        [{Li et al. [48].}]
+      ]
+      [{Psychology}
+        [{He et al. [49].}]
+      ]
+      [{Recommendation}
+        [{Li et al. [50], Lin et al. [51], Wang et al. [52].}]
+      ]
+    ]
+    [{\textbf{Challenges}}
+      [{Hallucination}
+        [{Zhang et al. [53], Huang et al. [54], Rawte et al. [55], Ye et al. [56], Ji et al. [57], Tonmoy et al. [58], Jiang et al. [59].}]
+      ]
+      [{Bias \& Fairness}
+        [{Gallegos et al. [60], Kotek et al. [61], Li et al. [62].}]
+      ]
+      [{Explainability}
+        [{Zhao et al. [63].}]
+      ]
+      [{Security}
+        [{Yao et al. [64], Shayegani et al. [65], Neel and Chang [66], Smith et al. [67], Dong et al. [68], Das et al. [69].}]
+      ]
+    ]
+  ]
+\end{forest}
+\end{document}

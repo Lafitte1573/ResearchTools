@@ -1,0 +1,124 @@
+% Reproduction of LLM agent taxonomy tree (WechatIMG442.jpeg)
+% Compile with: pdflatex tree.tex
+\documentclass[border=8pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{forest}
+\usepackage{xcolor}
+
+% Colors sampled from the source image
+\definecolor{leaffill}{RGB}{255, 250, 215}      % pale yellow citation leaves
+\definecolor{leafborder}{RGB}{180, 165, 110}    % muted tan border for leaves
+\definecolor{boxborder}{RGB}{120, 120, 120}     % gray border for category boxes
+
+\tikzset{
+  rootbox/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=1.7cm, align=center,
+    font=\footnotesize, inner sep=4pt, minimum height=8mm,
+  },
+  l1box/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=3.2cm, align=center,
+    font=\footnotesize, inner sep=4pt, minimum height=6mm,
+  },
+  catbox/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=3.0cm, align=center,
+    font=\footnotesize, inner sep=4pt, minimum height=6mm,
+  },
+  l3box/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=2.8cm, align=center,
+    font=\footnotesize, inner sep=4pt, minimum height=6mm,
+  },
+  leafbox/.style={
+    draw=leafborder, line width=0.4pt, fill=leaffill,
+    rounded corners=3pt,
+    text width=4.6cm, align=left,
+    font=\scriptsize, inner sep=4pt,
+  },
+}
+
+\begin{document}
+\begin{forest}
+  for tree={
+    grow'=east,
+    parent anchor=east, child anchor=west,
+    l sep=12pt, s sep=5pt,
+    edge={-, thin, draw=boxborder},
+    edge path={
+      \noexpand\path[\forestoption{edge}, rounded corners=3pt]
+        (!u.parent anchor) -- +(6pt,0) |- (.child anchor);
+    },
+  },
+  where level=0{rootbox}{},
+  where level=1{l1box}{},
+  where level=2{catbox}{},
+  where level=3{l3box}{},
+  where n children=0{leafbox}{},
+  [{Taxonomy}
+    [{\textbf{LLM Role-Playing} (§2)}
+      [{Environments (§2.1)}
+        [{Software Development (§2.1.1)}
+          [{Dong et al. (2023); ChatDev (Qian et al., 2023); MetaGPT (Hong et al., 2023a)\\ -- Dataset --\\ SoftwareDev (Hong et al., 2023a); SRDD (Qian et al., 2023)}]
+        ]
+        [{Game (§2.1.2)}
+          [{Generative Agents (Park et al., 2023); Humanoid Agent (Wang et al., 2023d); Fu et al. (2023); Voyager (Wang et al., 2023a)}]
+        ]
+        [{Medical Application (§2.1.3)}
+          [{Wu et al. (2023a); MedAgents (Tang et al., 2023a)}]
+        ]
+        [{LLM-as-Evaluator (§2.1.4)}
+          [{DRPE (Wu et al., 2023b); ChatEval (Chan et al., 2023)}]
+        ]
+      ]
+      [{Role-Playing Schema (§2.2)}
+        [{Single-Agent}
+          [{Voyager (Wang et al., 2023a); MindAct (Deng et al., 2024)}]
+        ]
+        [{Multi-Agent}
+          [{ChatDev (Qian et al., 2023); MedAgents (Tang et al., 2023a)}]
+        ]
+      ]
+      [{Emergent Behaviors (§2.3)}
+        [{Voluntary Behavior}
+          [{AgentVerse (Chen et al., 2023c); MetaGPT (Hong et al., 2023a)}]
+        ]
+        [{Conformity Behavior}
+          [{MedAgents (Tang et al., 2023a); Fu et al. (2023)}]
+        ]
+        [{Destructive Behavior}
+          [{CAMEL (Li et al., 2024a); Deshpande et al. (2023); Gupta et al. (2023)}]
+        ]
+      ]
+    ]
+    [{\textbf{LLM Personalization} (§3)}
+      [{Recommendation (§3.1)}
+        [{PaLM (Yang et al., 2023b); Dai et al. (2023); ONCE (Liu et al., 2023b); Christakopoulou et al. (2023); BookGPT (Zhiyuli et al., 2023)\\ -- Dataset --\\ MovieLens (Harper and Konstan, 2015)}]
+      ]
+      [{Search (§3.2)}
+        [{CoPS (Zhou et al., 2024); Spatharioti et al. (2023); Ziems et al. (2023); Sharma et al. (2024); Baek et al. (2024)}]
+      ]
+      [{Education (§3.3)}
+        [{HumSum (Shehata et al., 2023); EduChat (Dan et al., 2023); Park et al. (2024); Kasneci et al. (2023); Wang et al. (2024b)}]
+      ]
+      [{Healthcare (§3.4)}
+        [{openCHA (Abbasian et al., 2024a); CHA (Abbasian et al., 2024c); MaLP (Zhang et al., 2024a); HealthLLM (Jin et al., 2024b)\\ -- Dataset --\\ MedDialog (Zeng et al., 2020); IMCS-21 (Chen et al., 2022b); iCliniq (Li et al., 2023d)}]
+      ]
+      [{Dialogue (§3.5)}
+        [{ToD Modeling}
+          [{RetGPT (Yang et al., 2023a); ProToD (Hu et al., 2023); DSP (Li et al., 2024c)\\ -- Dataset --\\ MultiWoz (Budzianowski et al., 2018); SGD (Rastogi et al., 2020)}]
+        ]
+        [{User Persona Modeling}
+          [{$P^2$ (Liu et al., 2020); Kim et al. (2024b); CLV (Tang et al., 2023b)\\ -- Dataset --\\ PersonaChat (Zhang et al., 2018a); ConvAI2 PersonaChat (Dinan et al., 2019)}]
+        ]
+      ]
+    ]
+    [{\textbf{LLM Personality Evaluation} (§4)}
+      [{Big Five; MBTI; etc}
+        [{Jiang et al. (2023); Sorokovikova et al. (2024); Pan and Zeng (2023); Song et al. (2024); PsychoBench (Huang et al., 2023)}]
+      ]
+    ]
+  ]
+\end{forest}
+\end{document}

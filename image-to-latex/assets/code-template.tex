@@ -1,0 +1,62 @@
+% Code + quote box template — listings, mdframed, tcolorbox
+% Compile with: pdflatex code-template.tex
+\documentclass[border=10pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[most]{tcolorbox}
+
+\definecolor{codebg}{RGB}{248, 248, 248}
+\definecolor{codeborder}{RGB}{200, 200, 200}
+\definecolor{keyword}{RGB}{0, 90, 180}
+\definecolor{comment}{RGB}{120, 120, 120}
+\definecolor{string}{RGB}{160, 30, 30}
+
+\lstdefinestyle{py}{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{keyword}\bfseries,
+  commentstyle=\color{comment}\itshape,
+  stringstyle=\color{string},
+  numbers=left, numberstyle=\tiny\color{gray}, numbersep=8pt,
+  frame=single, rulecolor=\color{codeborder},
+  backgroundcolor=\color{codebg},
+  showstringspaces=false, breaklines=true, breakatwhitespace=true,
+  framesep=4pt, xleftmargin=14pt,
+}
+
+\begin{document}
+\begin{minipage}{0.8\textwidth}
+\begin{lstlisting}[style=py, caption={Hello example}]
+def hello(name: str) -> None:
+    """Greet someone politely."""
+    print(f"Hello, {name}!")
+
+if __name__ == "__main__":
+    hello("world")
+\end{lstlisting}
+
+\vspace{1em}
+
+\begin{mdframed}[
+  linecolor=blue!50, linewidth=0.5pt,
+  backgroundcolor=blue!5,
+  roundcorner=4pt,
+  innerleftmargin=10pt, innerrightmargin=10pt,
+  innertopmargin=8pt, innerbottommargin=8pt,
+]
+``The best way to predict the future is to invent it.''
+\hfill --- Alan Kay
+\end{mdframed}
+
+\vspace{1em}
+
+\begin{tcolorbox}[
+  colback=orange!5, colframe=orange!60!black,
+  title=Important, fonttitle=\bfseries,
+]
+Callout-style note with a colored header bar.
+\end{tcolorbox}
+\end{minipage}
+\end{document}

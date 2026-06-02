@@ -1,0 +1,65 @@
+% Tree / hierarchy diagram template (forest)
+% Compile with: pdflatex tree-template.tex
+\documentclass[border=10pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{forest}
+\usepackage{xcolor}
+
+% colors
+\definecolor{leaffill}{RGB}{220, 233, 245}
+\definecolor{leafborder}{RGB}{120, 165, 210}
+\definecolor{boxborder}{RGB}{70, 70, 70}
+
+% per-tier styles (give each level a fixed text width to align columns)
+\tikzset{
+  rootbox/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=1.7cm, align=center,
+    font=\footnotesize, inner sep=4pt, minimum height=10mm,
+  },
+  l1box/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=3.4cm, align=center,
+    font=\footnotesize, inner sep=5pt, minimum height=7mm,
+  },
+  catbox/.style={
+    draw=boxborder, rounded corners=3pt,
+    text width=3.4cm, align=center,
+    font=\footnotesize, inner sep=5pt, minimum height=7mm,
+  },
+  leafbox/.style={
+    draw=leafborder, line width=0.5pt, fill=leaffill,
+    rounded corners=3pt,
+    text width=4.8cm, align=left,
+    font=\scriptsize, inner sep=4pt,
+  },
+}
+
+\begin{document}
+\begin{forest}
+  for tree={
+    grow'=east,
+    parent anchor=east, child anchor=west,
+    l sep=14pt, s sep=7pt,
+    edge={-, thin, draw=boxborder},
+    % L-shaped connector with rounded bend
+    edge path={
+      \noexpand\path[\forestoption{edge}, rounded corners=4pt]
+        (!u.parent anchor) -- +(8pt,0) |- (.child anchor);
+    },
+  },
+  where level=0{rootbox}{},
+  where level=1{l1box}{},
+  where level=2{catbox}{},
+  where n children=0{leafbox}{},
+  [Root
+    [Category A
+      [Sub A.1 [{Leaf content with as many wrapped lines as needed.}]]
+      [Sub A.2 [{Another leaf.}]]
+    ]
+    [Category B
+      [Sub B.1 [{Leaf content.}]]
+    ]
+  ]
+\end{forest}
+\end{document}

@@ -1,0 +1,34 @@
+% Table template — booktabs + multirow + multicolumn + cellcolor
+% Compile with: pdflatex table-template.tex
+\documentclass[border=10pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+\definecolor{headerblue}{RGB}{220, 233, 245}
+
+\begin{document}
+\begin{tabular}{l c c c}
+  \toprule
+  \rowcolor{headerblue}
+  \multirow{2}{*}{\textbf{Method}}
+    & \multicolumn{2}{c}{\textbf{English}}
+    & \textbf{Chinese} \\
+  \cmidrule(lr){2-3}
+  \rowcolor{headerblue}
+    & Acc. & F1 & Acc. \\
+  \midrule
+  BERT-base       & 0.91 & 0.89 & 0.82 \\
+  BERT-large      & 0.93 & 0.92 & 0.85 \\
+  \midrule
+  \multirow{2}{*}{\makecell[l]{Ours\\(small)}}
+                  & 0.94 & 0.93 & 0.87 \\
+                  & 0.95 & 0.94 & 0.88 \\
+  Ours (large)    & \textbf{0.96} & \textbf{0.95} & \textbf{0.90} \\
+  \bottomrule
+\end{tabular}
+\end{document}

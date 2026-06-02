@@ -1,0 +1,83 @@
+% Mixed-page template — article skeleton with common packages preloaded
+% Compile with: pdflatex mixed-page-template.tex
+\documentclass[11pt, a4paper]{article}
+
+% layout & typography
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+
+% math
+\usepackage{amsmath, amssymb, amsthm}
+
+% tables & figures
+\usepackage{booktabs, multirow, array, makecell}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+
+% code & boxes & lists
+\usepackage{listings}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+
+% colors
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+% links (load last)
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue!50!black, citecolor=blue!50!black, urlcolor=blue!50!black}
+
+% theorem environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\title{Title Here}
+\author{Author Name}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Paragraph text. Use blank lines between paragraphs.
+
+\begin{theorem}[Example]
+  Statement of the theorem.
+\end{theorem}
+
+\begin{proof}
+  Proof body.
+\end{proof}
+
+\section{Method}
+
+\begin{equation}
+  \mathcal{L} = -\sum_i y_i \log \hat{y}_i
+\end{equation}
+
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item Point one.
+  \item Point two.
+\end{itemize}
+
+\begin{table}[H]
+  \centering
+  \caption{Results.}
+  \label{tab:results}
+  \begin{tabular}{lcc}
+    \toprule
+    Method & Acc. & F1 \\
+    \midrule
+    Baseline & 0.85 & 0.83 \\
+    Ours     & \textbf{0.92} & \textbf{0.90} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\end{document}
